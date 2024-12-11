@@ -1091,18 +1091,18 @@ function! calendar#diary(day, month, year, week, dir)
     return
   endif
   let sfile = expand(g:calendar_diary) . "/" . printf("%04d", a:year)
-  if isdirectory(sfile) == 0
-    if s:make_dir(sfile) != 0
-      return
-    endif
-  endif
-  let sfile = sfile . "/" . printf("%02d", a:month)
-  if isdirectory(sfile) == 0
-    if s:make_dir(sfile) != 0
-      return
-    endif
-  endif
-  let sfile = expand(sfile) . "/" . printf("%02d", a:day) . g:calendar_diary_extension
+  "if isdirectory(sfile) == 0
+  "  if s:make_dir(sfile) != 0
+  "    return
+  "  endif
+  "endif
+  let sfile = sfile . "-" . printf("%02d", a:month)
+  "if isdirectory(sfile) == 0
+  "  if s:make_dir(sfile) != 0
+  "    return
+  "  endif
+  "endif
+  let sfile = expand(sfile) . "-" . printf("%02d", a:day) . g:calendar_diary_extension
   let sfile = substitute(sfile, ' ', '\\ ', 'g')
   let vbufnr = bufnr('__Calendar')
 
